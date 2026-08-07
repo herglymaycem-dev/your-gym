@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cream: #faf7f2;
+    --rosegold: #e0a96d;
+    --copper: #c57b57;
+    --ink: #2a2420;
+  }
+
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(224, 169, 109, 0.3);
+    color: #2a2420;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .glass-dark {
+    background: rgba(42, 36, 32, 0.55);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(224, 169, 109, 0.18);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(110deg, #c57b57 0%, #e0a96d 45%, #f3e7d3 75%, #e0a96d 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 6s linear infinite;
+  }
+
+  .border-gradient {
+    border-image: linear-gradient(135deg, #e0a96d, #c57b57) 1;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f0e8;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#e0a96d, #c57b57);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c57b57;
+}
+
+/* Range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e0a96d, #c57b57);
+  cursor: pointer;
+  box-shadow: 0 0 16px rgba(224, 169, 109, 0.6);
+  border: 2px solid #fff;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e0a96d, #c57b57);
+  cursor: pointer;
+  border: 2px solid #fff;
+}
