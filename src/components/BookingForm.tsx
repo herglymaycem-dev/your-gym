@@ -21,14 +21,23 @@ export default function BookingForm() {
     }
     setStatus("loading");
     setError("");
+
+    // Send data to 'free_passes' table (or 'day_pass_bookings' depending on your DB)
     const { error: dbError } = await supabase
-      .from("day_pass_bookings")
-      .insert({ name: name.trim(), phone: phone.trim(), preferred_time: time });
+      .from("free_passes")
+      .insert({ 
+        name: name.trim(), 
+        phone: phone.trim(), 
+        preferred_time: time 
+      });
+
     if (dbError) {
+      console.error("Supabase Error Details:", dbError); // Hédhi bech t'warrik l-erreur exact fil Console
       setStatus("error");
-      setError("Something went wrong. Please try again or call us.");
+      setError(dbError.message || "Something went wrong. Please try again or call us.");
       return;
     }
+
     setStatus("success");
     setName("");
     setPhone("");
